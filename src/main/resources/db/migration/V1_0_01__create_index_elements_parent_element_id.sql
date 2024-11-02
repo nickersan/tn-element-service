@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS idx_elements_parent_element_id_owner_id_type ON elements (parent_element_id, owner_id, type);
