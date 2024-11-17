@@ -8,7 +8,7 @@ import static com.tn.lang.Strings.isNullOrWhitespace;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ import com.tn.service.query.QueryBuilder;
 @Slf4j
 @RestController
 @RequestMapping("/v1")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ElementController
 {
   private static final QueryBuilder QUERY_BUILDER = new QueryBuilder(Element.class);
