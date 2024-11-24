@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS elements
     type              VARCHAR(100) NOT NULL,
     name              VARCHAR(100) NOT NULL,
     created           TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated           TIMESTAMP    NULL,
     UNIQUE NULLS NOT DISTINCT (element_id, owner_id),
     UNIQUE NULLS NOT DISTINCT (parent_element_id, owner_id, type, name),
     FOREIGN KEY (parent_element_id, owner_id) REFERENCES elements(element_id, owner_id)

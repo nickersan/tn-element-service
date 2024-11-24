@@ -75,6 +75,7 @@ public class ElementController
   public Element update(@PathVariable("id") long id, @Validated @RequestBody ElementRequest request)
   {
     var existingElement = elementRepository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Element not found with ID: " + id));
+    if (!existingElement.ownerId().equals(request.ownerId)) throw new ResponseStatusException(BAD_REQUEST, "Owner IDs don't match");
     
     return elementRepository.save(new Element(id, request.parentId, request.ownerId, request.type, request.name, existingElement.created()));
   }

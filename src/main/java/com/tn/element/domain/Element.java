@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "elements")
@@ -62,13 +63,22 @@ public class Element
   @JsonProperty
   private LocalDateTime created;
 
+  @UpdateTimestamp
+  @JsonProperty
+  private LocalDateTime updated;
+
   public Element(@NotNull String ownerId, @NotNull String type, @NotNull String name)
   {
-    this(null, null, ownerId, type, name, null);
+    this(null, null, ownerId, type, name, null, null);
   }
 
   public Element(Long parentId, @NotNull String ownerId, @NotNull String type, @NotNull String name)
   {
-    this(null, parentId, ownerId, type, name, null);
+    this(null, parentId, ownerId, type, name, null, null);
+  }
+
+  public Element(long id, Long parentId, @NotNull String ownerId, @NotNull String type, @NotNull String name, LocalDateTime created)
+  {
+    this(id, parentId, ownerId, type, name, created, null);
   }
 }
